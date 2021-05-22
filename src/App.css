@@ -38,3 +38,11 @@ tbody tr:nth-child(2n) {
 .Search input {
   width: 100%;
 }
+
+.tr1 {
+  width: 100px;
+}
+
+.tr2, .tr3 {
+  width: 400px;
+}

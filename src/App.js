@@ -7,14 +7,23 @@ import './App.css';
 
 function App() {
   const [getUser, setUser] = useState([]);
+  const [getFilt, setFilt] = useState([]);
 
   useEffect(() => {
     API.getUsers().then(res => {
       setUser(res.data.results);
-      console.log(res.data.results);
-      console.log(getUser);
+      setFilt(res.data.results);
+      // console.log(res.data.results);
+      // console.log(getUser);
     }).catch(err => console.log(err));
   }, []);
+
+  const nameFilter = event => {
+    // console.log(event.target.value.toLowerCase());
+    const toFilter = getUser.filter(xx => (xx.name.first + " " + xx.name.last).toLowerCase().includes(event.target.value.toLowerCase()));
+    // console.log(toFilter);
+    setFilt(toFilter);
+  };
 
   return (
     <div className="App">
@@ -22,20 +31,23 @@ function App() {
         <h1>Employee Directory</h1>
       </header>
       <div className="Search">
-        <input type="text"></input>
+        <input 
+          type="text"
+          onChange={nameFilter}
+        />
       </div>
       <table>
         <thead>
           <tr>
-            <th>Image</th>
-            <th>Name</th>
+            <th className="tr1">Image</th>
+            <th className="tr2">Name</th>
             {/* <th>Phone</th> */}
-            <th>Email</th>
+            <th className="tr3">Email</th>
             {/* <th>Age</th> */}
           </tr>
         </thead>
         <tbody>
-          {getUser.map(user => {
+          {getFilt.map(user => {
             return (
               <TableRow
                 key={user.cell}
