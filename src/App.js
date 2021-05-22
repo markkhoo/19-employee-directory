@@ -35,7 +35,7 @@ function App() {
       if ( a.name.last > b.name.last ) { return 1; }
       return 0;
     });
-    console.log(toSort);
+    // console.log(toSort);
     setFilt(toSort);
   };
 
@@ -48,6 +48,7 @@ function App() {
         <input 
           type="text"
           onChange={nameFilter}
+          placeholder="Name"
         />
       </div>
       <table>
