@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useReducer, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import TableRow from "./components/row";
 import API from "./utils/API";
 
@@ -18,11 +18,25 @@ function App() {
     }).catch(err => console.log(err));
   }, []);
 
+  // useEffect(() => {
+  //   console.log("hello world")
+  // }, [getFilt]);
+
   const nameFilter = event => {
     // console.log(event.target.value.toLowerCase());
     const toFilter = getUser.filter(xx => (xx.name.first + " " + xx.name.last).toLowerCase().includes(event.target.value.toLowerCase()));
     // console.log(toFilter);
     setFilt(toFilter);
+  };
+
+  const nameSort = () => {
+    const toSort = getUser.sort((a,b) => {
+      if ( a.name.last < b.name.last ) { return -1; }
+      if ( a.name.last > b.name.last ) { return 1; }
+      return 0;
+    });
+    console.log(toSort);
+    setFilt(toSort);
   };
 
   return (
@@ -40,7 +54,7 @@ function App() {
         <thead>
           <tr>
             <th className="tr1">Image</th>
-            <th className="tr2">Name</th>
+            <th className="tr2" onClick={nameSort}>Name</th>
             {/* <th>Phone</th> */}
             <th className="tr3">Email</th>
             {/* <th>Age</th> */}

@@ -46,3 +46,8 @@ tbody tr:nth-child(2n) {
 .tr2, .tr3 {
   width: 400px;
 }
+
+.tr2:hover {
+  cursor: pointer;
+  color: yellow;
+}
