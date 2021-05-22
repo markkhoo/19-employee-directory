@@ -2,11 +2,18 @@ import axios from "axios";
 import React from "react";
 import { useState, useReducer, useEffect } from 'react'
 import TableRow from "./components/row";
+import API from "./utils/API";
 
 import './App.css';
 
 function App() {
 
+
+  useEffect(() => {
+    API.getUsers().then(res => {
+      console.log(res.data.results);
+    }).catch(err => console.log(err));
+  });
 
   return (
     <div className="App">
