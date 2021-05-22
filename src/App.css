@@ -1,12 +1,27 @@
+td {
+  padding: 0.125em 1em;
+}
 
+thead tr {
+  background-color: #282c34;
+  color: white;
+}
+
+tbody tr:nth-child(2n) {
+  background-color: #e1e4e9;
+}
 
 .App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
 .App-header {
   background-color: #282c34;
   min-height: 100px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
